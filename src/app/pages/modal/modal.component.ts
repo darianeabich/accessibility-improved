@@ -1,30 +1,26 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { A11yModule } from '@angular/cdk/a11y';
 import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Livro } from '../../models/interfaces';
 
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, A11yModule],
   templateUrl: './modal.component.html',
-  styleUrl: './modal.component.css'
+  styleUrl: './modal.component.css',
 })
 export class ModalComponent {
   @Input() livro!: Livro;
   statusModal: boolean = true;
-  @Output() mudouModal = new EventEmitter<boolean>()
+  @Output() mudouModal = new EventEmitter<boolean>();
 
   constructor() {}
 
   fecharModal() {
-    this.statusModal = false
-    this.mudouModal.emit(this.statusModal)
+    this.statusModal = false;
+    this.mudouModal.emit(this.statusModal);
   }
 
   lerPrevia() {
